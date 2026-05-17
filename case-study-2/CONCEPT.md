@@ -21,7 +21,7 @@ flowchart TB
     Gitea -->|"webhook"| Woodpecker
     Woodpecker -->|"schedules job pods"| K8s
     K8s -->|"artifacts, caches, reports"| MinIO
-    K8s -.->|"logs via Fluent Bit / Alloy"| Loki
+    K8s -.->|"logs via FluentBit"| Loki
     K8s -.->|"metrics scraped"| Prometheus
     Loki --> Grafana
     Prometheus --> Grafana
