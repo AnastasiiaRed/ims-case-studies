@@ -98,20 +98,19 @@ fi
 # destination check
 
 # only overwrite if -force flag is provided
-if [ -e "$DEST" ]; then
+if [ -z "$DEST" ]; then
+    DEST=/tmp/clone_$$
+    mkdir -p "$DEST"
+    log "destination not set, using $DEST"
+elif [ -e "$DEST" ]; then
     [ "$FORCE" = 1 ] || err "$DEST exists, use -f to overwrite"
     rm -rf -- "$DEST"
-else
-    log "creating destination directory /tmp/clone_$$"
-    mkdir -p /tmp/clone_$$
-    DEST=/tmp/clone_$$
 fi
-
 
 # actual clone
 
 # TODO: add retries on failures
-# TODO: add branch as parameter (question - various gir version support?)
+# TODO: add branch as parameter (question - various git version support?)
 
 log "cloning $REPO_URL to $DEST"
 
