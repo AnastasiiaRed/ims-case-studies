@@ -17,6 +17,9 @@ Shallow-clones a git repo for any UNIX compatible OS (POSIX support).
 sh shallow-clone-helper.sh -r https://github.com/chrislgarry/Apollo-11.git
 
 # private
+# login once to github
+gh auth login
+
 GIT_TOKEN="$(gh auth token)" sh shallow-clone-helper.sh \
   -r https://github.com/org/repo.git -d ./repo
 ```
